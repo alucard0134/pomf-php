@@ -46,7 +46,7 @@ define('POMF_DB_CONN', 'mysql:unix_socket=/tmp/mysql.sock;dbname=pomf');
 /** @param string POMF_DB_NAME Database username */
 define('POMF_DB_USER', 'pomf');
 /** @param string POMF_DB_PASS Database password */
-define('POMF_DB_PASS', '***');
+define('POMF_DB_PASS', '');
 
 /**
  * File system location where to store uploaded files
