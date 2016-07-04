@@ -112,7 +112,7 @@ function uploadFile($file)
         return array(
             'hash' => $file->getSha1(),
             'name' => $file->name,
-            'url' => POMF_URL.$result['filename'],
+            'url' => POMF_URL.rawurlencode($result['filename']),
             'size' => $file->size,
         );
     }
@@ -168,7 +168,7 @@ function uploadFile($file)
     return array(
         'hash' => $file->getSha1(),
         'name' => $file->name,
-        'url' => POMF_URL.$newname,
+        'url' => POMF_URL.rawurlencode($newname),
         'size' => $file->size,
     );
 }
