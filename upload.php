@@ -53,7 +53,7 @@ function generateName($file)
 
         // Add the extension to the file name
         if (isset($ext) && $ext !== '') {
-            $name .= '.'.strip_tags($ext);
+            $name .= '.'.$ext;
         }
 
         // Check if a file with the same name does already exist in the database
