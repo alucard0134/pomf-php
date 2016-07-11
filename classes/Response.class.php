@@ -69,6 +69,9 @@ class Response
             case 'csv':
                 $response = $this->csvError($desc);
                 break;
+			case 'gyazo':
+				$response = $this->gyazo_error($code, $desc);
+				break;
             case 'html':
                 $response = $this->htmlError($code, $desc);
                 break;
@@ -98,6 +101,9 @@ class Response
             case 'csv':
                 $response = $this->csvSuccess($files);
                 break;
+			case 'gyazo':
+				$response = $this->gyazo_success($files);
+				break;
             case 'html':
                 $response = $this->htmlSuccess($files);
                 break;
@@ -175,6 +181,17 @@ class Response
 
         return $result;
     }
+
+
+	private static function gyazo_error ($code, $description) 
+	{
+	    return "ERROR: (" . $code . ") " . $description;
+	}
+	
+	private static function gyazo_success ($files) 
+	{
+		return POMF_URL . $files[0]['url'];
+	}
 
     /**
      * Indicates with JSON body the request was invalid.
