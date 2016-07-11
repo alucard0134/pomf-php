@@ -53,7 +53,7 @@ function generateName($file)
 
         // Add the extension to the file name
         if (isset($ext) && $ext !== '') {
-            $name .= '.'.strip_tags($ext);
+            $name .= '.'.$ext;
         }
 
         // Check if a file with the same name does already exist in the database
@@ -112,7 +112,7 @@ function uploadFile($file)
         return array(
             'hash' => $file->getSha1(),
             'name' => $file->name,
-            'url' => POMF_URL.$result['filename'],
+            'url' => POMF_URL.rawurlencode($result['filename']),
             'size' => $file->size,
         );
     }
@@ -140,8 +140,6 @@ function uploadFile($file)
     }
 
     // Add it to the database
-    // 'expire' support is deprecated since version 2.1.0. It may be
-    // removed in a future release.
     if (empty($_SESSION['id'])) {
         // Query if user is NOT logged in
         $q = $db->prepare('INSERT INTO files (hash, originalname, filename, size, date, ' .
@@ -168,7 +166,7 @@ function uploadFile($file)
     return array(
         'hash' => $file->getSha1(),
         'name' => $file->name,
-        'url' => POMF_URL.$newname,
+        'url' => POMF_URL.rawurlencode($newname),
         'size' => $file->size,
     );
 }
@@ -212,8 +210,6 @@ function refiles($files)
         $f->size = $file['size'];
         $f->tempfile = $file['tmp_name'];
         $f->error = $file['error'];
-        // 'expire' doesn't exist neither in $_FILES nor in UploadedFile;
-        // it was never implemented and has been deprecated since version 2.1.0.
         //$f->expire   = $file['expire'];
         $result[] = $f;
     }

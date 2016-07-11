@@ -37,7 +37,7 @@
  * PDO_MYSQL DSN.
  * @param string POMF_DB_CONN DSN:host|unix_socket=hostname|path;dbname=database
  */
-define('POMF_DB_CONN', 'mysql:unix_socket=/tmp/mysql.sock;dbname=pomf');
+define('POMF_DB_CONN', 'mysql:unix_socket=/var/run/mysqld/mysqld.sock;dbname=pomf');
 
 /**
  * PDO database login credentials
@@ -46,7 +46,7 @@ define('POMF_DB_CONN', 'mysql:unix_socket=/tmp/mysql.sock;dbname=pomf');
 /** @param string POMF_DB_NAME Database username */
 define('POMF_DB_USER', 'pomf');
 /** @param string POMF_DB_PASS Database password */
-define('POMF_DB_PASS', '***');
+define('POMF_DB_PASS', '');
 
 /**
  * File system location where to store uploaded files

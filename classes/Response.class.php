@@ -39,7 +39,6 @@ class Response
                 $this->type = $response_type;
                 break;
             case 'gyazo':
-                // Deprecated API since version 2.0.0, fallback to similar text API
                 header('Content-Type: text/plain; charset=UTF-8');
                 $this->type = 'text';
                 break;
